@@ -67,7 +67,7 @@ func main() {
 	// 上传所有文件
 	for _, path := range paths {
 		// 构建完整的目标路径
-		targetPath := filepath.Join(config.Alias, config.Bucket, path.TargetPath)
+		targetPath := filepath.Join(config.Alias, path.Bucket, path.TargetPath)
 		logger.Printf("\n正在上传: %s -> %s\n", path.SourcePath, targetPath)
 
 		// 上传文件

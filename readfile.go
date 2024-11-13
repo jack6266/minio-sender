@@ -9,7 +9,7 @@ import (
 
 // PathInfo 存储解析后的路径信息
 type PathInfo struct {
-	StoreID    string
+	Bucket     string
 	SourcePath string
 	TargetPath string
 }
@@ -47,15 +47,17 @@ func ReadPathsFile(filename string) ([]PathInfo, error) {
 		}
 
 		// 清理路径中的空白字符
+		toBucket := "bucket-" + strings.TrimSpace(parts[0])
 		sourcePath := strings.TrimSpace(parts[1])
 		targetPath := strings.TrimSpace(parts[2])
 
 		// 验证路径不为空
-		if sourcePath == "" || targetPath == "" {
+		if toBucket == "" || sourcePath == "" || targetPath == "" {
 			return nil, fmt.Errorf("第 %d 行包含空路径: %s", lineNum, line)
 		}
 
 		paths = append(paths, PathInfo{
+			Bucket:     toBucket,
 			SourcePath: sourcePath,
 			TargetPath: targetPath,
 		})
