@@ -1,0 +1,2 @@
+store1;C:\temp\test.txt;backup/test.txt
+store2;C:\temp\image.jpg;images/2024/image.jpg
